@@ -23,10 +23,13 @@ else:
     # Filter dataframe by date range
     filtered_df = df[(df['r_date'] >= pd.to_datetime(start_date)) & (df['r_date'] <= pd.to_datetime(end_date))]
 
+    # Add "All" option to company name dropdown
+    company_names = ['All'] + list(filtered_df['company_name'].unique())
+
     # Dropdown for selecting customer
     selected_customer = st.selectbox(
         'Select Customer',
-        filtered_df['company_name'].unique()
+        company_names
     )
 
     filtered_df = filtered_df[filtered_df['company_name'] == selected_customer]
