@@ -125,7 +125,7 @@ else:
 
     # Update layout for better spacing
     fig_flow1.update_layout(
-        title_text="Flow 1: Control Plan, Supplier Name, and Price",
+        title_text="Flow 1: Control Plan, Supplier Name",
         font_size=10,
         width=1000,
         height=700,
