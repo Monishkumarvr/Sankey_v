@@ -7,21 +7,21 @@ file_path = 'Quality Report Analytics - Main List.csv'
 df = pd.read_csv(file_path)
 
 # Convert date column to datetime
-df['date'] = pd.to_datetime(df['date'])
+df['r_date'] = pd.to_datetime(df['r_date'], format="%d-%m-%Y")
 
 # Streamlit app
 st.title('Sankey Diagram for QC Data')
 
 # Date filter
-start_date = st.date_input('Start date', df['date'].min().date())
-end_date = st.date_input('End date', df['date'].max().date())
+start_date = st.date_input('Start date', df['r_date'].min().date())
+end_date = st.date_input('End date', df['r_date'].max().date())
 
 # Ensure end_date is not before start_date
 if start_date > end_date:
     st.error('Error: End date must fall after start date.')
 else:
     # Filter dataframe by date range
-    filtered_df = df[(df['date'] >= pd.to_datetime(start_date)) & (df['date'] <= pd.to_datetime(end_date))]
+    filtered_df = df[(df['r_date'] >= pd.to_datetime(start_date)) & (df['r_date'] <= pd.to_datetime(end_date))]
 
     # Dropdown for selecting customer
     selected_customer = st.selectbox(
