@@ -32,7 +32,8 @@ else:
         company_names
     )
 
-    filtered_df = filtered_df[filtered_df['company_name'] == selected_customer]
+    if 'All' not in selected_customers:
+        filtered_df = filtered_df[filtered_df['company_name'].isin(selected_customers)]
 
     # Prepare the base numbers
     num_ids = filtered_df['id'].nunique()
