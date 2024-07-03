@@ -27,7 +27,7 @@ else:
     company_names = ['All'] + list(filtered_df['company_name'].unique())
 
     # Dropdown for selecting customer
-    selected_customer = st.selectbox(
+    selected_customers = st.selectbox(
         'Select Customer',
         company_names
     )
